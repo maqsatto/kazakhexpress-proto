@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package kazakhexpress.payment.v1;
+
+option go_package = "github.com/maqsatto/kazakhexpress-proto/gen/go/kazakhexpress/payment/v1;paymentv1";
+
+service PaymentService {
+  rpc CreatePayment(CreatePaymentRequest) returns (Payment);
+  rpc GetPayment(GetPaymentRequest) returns (Payment);
+  rpc GetPaymentByOrderID(GetPaymentByOrderIDRequest) returns (Payment);
+  rpc ListPayments(ListPaymentsRequest) returns (ListPaymentsResponse);
+  rpc RefundPayment(RefundPaymentRequest) returns (Payment);
+  rpc ConfirmPayment(ConfirmPaymentRequest) returns (Payment);
+  rpc CancelPayment(CancelPaymentRequest) returns (Payment);
+}
+
+message CreatePaymentRequest {
+  string order_id = 1;
+  string customer_id = 2;
+  string customer_email = 3;
+  int64 amount_kzt = 4;
+  PaymentMethod method = 5;
+  string idempotency_key = 6;
+}
+
+message GetPaymentRequest {
+  string payment_id = 1;
+}
+
+message GetPaymentByOrderIDRequest {
+  string order_id = 1;
+}
+
+message ListPaymentsRequest {
+  string customer_id = 1;
+}
+
+message RefundPaymentRequest {
+  string payment_id = 1;
+  string reason = 2;
+}
+
+message ConfirmPaymentRequest {
+  string payment_id = 1;
+  string provider_transaction_id = 2;
+}
+
+message CancelPaymentRequest {
+  string payment_id = 1;
+  string reason = 2;
+}
+
+message Payment {
+  string id = 1;
+  string order_id = 2;
+  string customer_id = 3;
+  string customer_email = 4;
+  int64 amount_kzt = 5;
+  PaymentMethod method = 6;
+  PaymentStatus status = 7;
+  string provider_transaction_id = 8;
+  string idempotency_key = 9;
+  string refund_reason = 10;
+  string failure_reason = 11;
+  string created_at = 12;
+  string updated_at = 13;
+}
+
+message ListPaymentsResponse {
+  repeated Payment payments = 1;
+}
+
+enum PaymentMethod {
+  PAYMENT_METHOD_UNSPECIFIED = 0;
+  PAYMENT_METHOD_CARD = 1;
+  PAYMENT_METHOD_KASPI = 2;
+  PAYMENT_METHOD_WALLET = 3;
+}
+
+enum PaymentStatus {
+  PAYMENT_STATUS_UNSPECIFIED = 0;
+  PAYMENT_STATUS_PENDING = 1;
+  PAYMENT_STATUS_SUCCEEDED = 2;
+  PAYMENT_STATUS_FAILED = 3;
+  PAYMENT_STATUS_REFUNDED = 4;
+  PAYMENT_STATUS_CANCELLED = 5;
+}
+

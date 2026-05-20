@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package kazakhexpress.smtp.v1;
+
+option go_package = "github.com/maqsatto/kazakhexpress-proto/gen/go/kazakhexpress/smtp/v1;smtpv1";
+
+service SMTPService {
+  rpc SendEmail(SendEmailRequest) returns (SendEmailResponse);
+  rpc SendPaymentReceipt(PaymentReceiptRequest) returns (SendEmailResponse);
+  rpc SendPaymentRefund(PaymentRefundRequest) returns (SendEmailResponse);
+  rpc SendPaymentFailure(PaymentFailureRequest) returns (SendEmailResponse);
+}
+
+message SendEmailRequest {
+  string to = 1;
+  string subject = 2;
+  string body = 3;
+}
+
+message PaymentReceiptRequest {
+  string to = 1;
+  string payment_id = 2;
+  string order_id = 3;
+  int64 amount_kzt = 4;
+}
+
+message PaymentRefundRequest {
+  string to = 1;
+  string payment_id = 2;
+  string order_id = 3;
+  int64 amount_kzt = 4;
+  string reason = 5;
+}
+
+message PaymentFailureRequest {
+  string to = 1;
+  string payment_id = 2;
+  string order_id = 3;
+  int64 amount_kzt = 4;
+  string reason = 5;
+}
+
+message SendEmailResponse {
+  bool accepted = 1;
+}
+

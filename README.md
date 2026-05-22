@@ -7,6 +7,8 @@ Shared protobuf contracts and generated Go clients/servers for KazakhExpress mic
 ```txt
 proto/kazakhexpress/payment/v1/payment.proto
 proto/kazakhexpress/smtp/v1/smtp.proto
+proto/kazakhexpress/user/v1/smtp.proto
+
 gen/go/... generated Go code
 ```
 

@@ -19,7 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	SMTPService_HealthCheck_FullMethodName        = "/kazakhexpress.smtp.v1.SMTPService/HealthCheck"
 	SMTPService_SendEmail_FullMethodName          = "/kazakhexpress.smtp.v1.SMTPService/SendEmail"
+	SMTPService_SendWelcomeEmail_FullMethodName   = "/kazakhexpress.smtp.v1.SMTPService/SendWelcomeEmail"
 	SMTPService_SendPaymentReceipt_FullMethodName = "/kazakhexpress.smtp.v1.SMTPService/SendPaymentReceipt"
 	SMTPService_SendPaymentRefund_FullMethodName  = "/kazakhexpress.smtp.v1.SMTPService/SendPaymentRefund"
 	SMTPService_SendPaymentFailure_FullMethodName = "/kazakhexpress.smtp.v1.SMTPService/SendPaymentFailure"
@@ -29,7 +31,9 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SMTPServiceClient interface {
+	HealthCheck(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error)
 	SendEmail(ctx context.Context, in *SendEmailRequest, opts ...grpc.CallOption) (*SendEmailResponse, error)
+	SendWelcomeEmail(ctx context.Context, in *WelcomeEmailRequest, opts ...grpc.CallOption) (*SendEmailResponse, error)
 	SendPaymentReceipt(ctx context.Context, in *PaymentReceiptRequest, opts ...grpc.CallOption) (*SendEmailResponse, error)
 	SendPaymentRefund(ctx context.Context, in *PaymentRefundRequest, opts ...grpc.CallOption) (*SendEmailResponse, error)
 	SendPaymentFailure(ctx context.Context, in *PaymentFailureRequest, opts ...grpc.CallOption) (*SendEmailResponse, error)
@@ -43,10 +47,30 @@ func NewSMTPServiceClient(cc grpc.ClientConnInterface) SMTPServiceClient {
 	return &sMTPServiceClient{cc}
 }
 
+func (c *sMTPServiceClient) HealthCheck(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(HealthCheckResponse)
+	err := c.cc.Invoke(ctx, SMTPService_HealthCheck_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *sMTPServiceClient) SendEmail(ctx context.Context, in *SendEmailRequest, opts ...grpc.CallOption) (*SendEmailResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SendEmailResponse)
 	err := c.cc.Invoke(ctx, SMTPService_SendEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sMTPServiceClient) SendWelcomeEmail(ctx context.Context, in *WelcomeEmailRequest, opts ...grpc.CallOption) (*SendEmailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SendEmailResponse)
+	err := c.cc.Invoke(ctx, SMTPService_SendWelcomeEmail_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,7 +111,9 @@ func (c *sMTPServiceClient) SendPaymentFailure(ctx context.Context, in *PaymentF
 // All implementations must embed UnimplementedSMTPServiceServer
 // for forward compatibility.
 type SMTPServiceServer interface {
+	HealthCheck(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error)
 	SendEmail(context.Context, *SendEmailRequest) (*SendEmailResponse, error)
+	SendWelcomeEmail(context.Context, *WelcomeEmailRequest) (*SendEmailResponse, error)
 	SendPaymentReceipt(context.Context, *PaymentReceiptRequest) (*SendEmailResponse, error)
 	SendPaymentRefund(context.Context, *PaymentRefundRequest) (*SendEmailResponse, error)
 	SendPaymentFailure(context.Context, *PaymentFailureRequest) (*SendEmailResponse, error)
@@ -101,8 +127,14 @@ type SMTPServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedSMTPServiceServer struct{}
 
+func (UnimplementedSMTPServiceServer) HealthCheck(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method HealthCheck not implemented")
+}
 func (UnimplementedSMTPServiceServer) SendEmail(context.Context, *SendEmailRequest) (*SendEmailResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SendEmail not implemented")
+}
+func (UnimplementedSMTPServiceServer) SendWelcomeEmail(context.Context, *WelcomeEmailRequest) (*SendEmailResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SendWelcomeEmail not implemented")
 }
 func (UnimplementedSMTPServiceServer) SendPaymentReceipt(context.Context, *PaymentReceiptRequest) (*SendEmailResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SendPaymentReceipt not implemented")
@@ -134,6 +166,24 @@ func RegisterSMTPServiceServer(s grpc.ServiceRegistrar, srv SMTPServiceServer) {
 	s.RegisterService(&SMTPService_ServiceDesc, srv)
 }
 
+func _SMTPService_HealthCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HealthCheckRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SMTPServiceServer).HealthCheck(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SMTPService_HealthCheck_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SMTPServiceServer).HealthCheck(ctx, req.(*HealthCheckRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _SMTPService_SendEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SendEmailRequest)
 	if err := dec(in); err != nil {
@@ -148,6 +198,24 @@ func _SMTPService_SendEmail_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SMTPServiceServer).SendEmail(ctx, req.(*SendEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SMTPService_SendWelcomeEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(WelcomeEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SMTPServiceServer).SendWelcomeEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SMTPService_SendWelcomeEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SMTPServiceServer).SendWelcomeEmail(ctx, req.(*WelcomeEmailRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -214,8 +282,16 @@ var SMTPService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*SMTPServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "HealthCheck",
+			Handler:    _SMTPService_HealthCheck_Handler,
+		},
+		{
 			MethodName: "SendEmail",
 			Handler:    _SMTPService_SendEmail_Handler,
+		},
+		{
+			MethodName: "SendWelcomeEmail",
+			Handler:    _SMTPService_SendWelcomeEmail_Handler,
 		},
 		{
 			MethodName: "SendPaymentReceipt",

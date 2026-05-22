@@ -131,6 +131,86 @@ func (PaymentStatus) EnumDescriptor() ([]byte, []int) {
 	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{1}
 }
 
+type HealthCheckRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *HealthCheckRequest) Reset() {
+	*x = HealthCheckRequest{}
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HealthCheckRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HealthCheckRequest) ProtoMessage() {}
+
+func (x *HealthCheckRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HealthCheckRequest.ProtoReflect.Descriptor instead.
+func (*HealthCheckRequest) Descriptor() ([]byte, []int) {
+	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{0}
+}
+
+type HealthCheckResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *HealthCheckResponse) Reset() {
+	*x = HealthCheckResponse{}
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HealthCheckResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HealthCheckResponse) ProtoMessage() {}
+
+func (x *HealthCheckResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HealthCheckResponse.ProtoReflect.Descriptor instead.
+func (*HealthCheckResponse) Descriptor() ([]byte, []int) {
+	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *HealthCheckResponse) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
 type CreatePaymentRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	OrderId        string                 `protobuf:"bytes,1,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
@@ -145,7 +225,7 @@ type CreatePaymentRequest struct {
 
 func (x *CreatePaymentRequest) Reset() {
 	*x = CreatePaymentRequest{}
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[0]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -157,7 +237,7 @@ func (x *CreatePaymentRequest) String() string {
 func (*CreatePaymentRequest) ProtoMessage() {}
 
 func (x *CreatePaymentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[0]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -170,7 +250,7 @@ func (x *CreatePaymentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePaymentRequest.ProtoReflect.Descriptor instead.
 func (*CreatePaymentRequest) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{0}
+	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CreatePaymentRequest) GetOrderId() string {
@@ -224,7 +304,7 @@ type GetPaymentRequest struct {
 
 func (x *GetPaymentRequest) Reset() {
 	*x = GetPaymentRequest{}
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[1]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -236,7 +316,7 @@ func (x *GetPaymentRequest) String() string {
 func (*GetPaymentRequest) ProtoMessage() {}
 
 func (x *GetPaymentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[1]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -249,7 +329,7 @@ func (x *GetPaymentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPaymentRequest.ProtoReflect.Descriptor instead.
 func (*GetPaymentRequest) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{1}
+	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetPaymentRequest) GetPaymentId() string {
@@ -268,7 +348,7 @@ type GetPaymentByOrderIDRequest struct {
 
 func (x *GetPaymentByOrderIDRequest) Reset() {
 	*x = GetPaymentByOrderIDRequest{}
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[2]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -280,7 +360,7 @@ func (x *GetPaymentByOrderIDRequest) String() string {
 func (*GetPaymentByOrderIDRequest) ProtoMessage() {}
 
 func (x *GetPaymentByOrderIDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[2]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -293,7 +373,7 @@ func (x *GetPaymentByOrderIDRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPaymentByOrderIDRequest.ProtoReflect.Descriptor instead.
 func (*GetPaymentByOrderIDRequest) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{2}
+	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetPaymentByOrderIDRequest) GetOrderId() string {
@@ -312,7 +392,7 @@ type ListPaymentsRequest struct {
 
 func (x *ListPaymentsRequest) Reset() {
 	*x = ListPaymentsRequest{}
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[3]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -324,7 +404,7 @@ func (x *ListPaymentsRequest) String() string {
 func (*ListPaymentsRequest) ProtoMessage() {}
 
 func (x *ListPaymentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[3]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -337,7 +417,7 @@ func (x *ListPaymentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPaymentsRequest.ProtoReflect.Descriptor instead.
 func (*ListPaymentsRequest) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{3}
+	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListPaymentsRequest) GetCustomerId() string {
@@ -357,7 +437,7 @@ type RefundPaymentRequest struct {
 
 func (x *RefundPaymentRequest) Reset() {
 	*x = RefundPaymentRequest{}
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[4]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -369,7 +449,7 @@ func (x *RefundPaymentRequest) String() string {
 func (*RefundPaymentRequest) ProtoMessage() {}
 
 func (x *RefundPaymentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[4]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -382,7 +462,7 @@ func (x *RefundPaymentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RefundPaymentRequest.ProtoReflect.Descriptor instead.
 func (*RefundPaymentRequest) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{4}
+	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *RefundPaymentRequest) GetPaymentId() string {
@@ -409,7 +489,7 @@ type ConfirmPaymentRequest struct {
 
 func (x *ConfirmPaymentRequest) Reset() {
 	*x = ConfirmPaymentRequest{}
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[5]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -421,7 +501,7 @@ func (x *ConfirmPaymentRequest) String() string {
 func (*ConfirmPaymentRequest) ProtoMessage() {}
 
 func (x *ConfirmPaymentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[5]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -434,7 +514,7 @@ func (x *ConfirmPaymentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmPaymentRequest.ProtoReflect.Descriptor instead.
 func (*ConfirmPaymentRequest) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{5}
+	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ConfirmPaymentRequest) GetPaymentId() string {
@@ -461,7 +541,7 @@ type CancelPaymentRequest struct {
 
 func (x *CancelPaymentRequest) Reset() {
 	*x = CancelPaymentRequest{}
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[6]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -473,7 +553,7 @@ func (x *CancelPaymentRequest) String() string {
 func (*CancelPaymentRequest) ProtoMessage() {}
 
 func (x *CancelPaymentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[6]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -486,7 +566,7 @@ func (x *CancelPaymentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelPaymentRequest.ProtoReflect.Descriptor instead.
 func (*CancelPaymentRequest) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{6}
+	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *CancelPaymentRequest) GetPaymentId() string {
@@ -524,7 +604,7 @@ type Payment struct {
 
 func (x *Payment) Reset() {
 	*x = Payment{}
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[7]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -536,7 +616,7 @@ func (x *Payment) String() string {
 func (*Payment) ProtoMessage() {}
 
 func (x *Payment) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[7]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -549,7 +629,7 @@ func (x *Payment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Payment.ProtoReflect.Descriptor instead.
 func (*Payment) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{7}
+	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *Payment) GetId() string {
@@ -652,7 +732,7 @@ type ListPaymentsResponse struct {
 
 func (x *ListPaymentsResponse) Reset() {
 	*x = ListPaymentsResponse{}
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[8]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -664,7 +744,7 @@ func (x *ListPaymentsResponse) String() string {
 func (*ListPaymentsResponse) ProtoMessage() {}
 
 func (x *ListPaymentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[8]
+	mi := &file_kazakhexpress_payment_v1_payment_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -677,7 +757,7 @@ func (x *ListPaymentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPaymentsResponse.ProtoReflect.Descriptor instead.
 func (*ListPaymentsResponse) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{8}
+	return file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ListPaymentsResponse) GetPayments() []*Payment {
@@ -691,7 +771,10 @@ var File_kazakhexpress_payment_v1_payment_proto protoreflect.FileDescriptor
 
 const file_kazakhexpress_payment_v1_payment_proto_rawDesc = "" +
 	"\n" +
-	"&kazakhexpress/payment/v1/payment.proto\x12\x18kazakhexpress.payment.v1\"\x82\x02\n" +
+	"&kazakhexpress/payment/v1/payment.proto\x12\x18kazakhexpress.payment.v1\"\x14\n" +
+	"\x12HealthCheckRequest\"-\n" +
+	"\x13HealthCheckResponse\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"\x82\x02\n" +
 	"\x14CreatePaymentRequest\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\tR\aorderId\x12\x1f\n" +
 	"\vcustomer_id\x18\x02 \x01(\tR\n" +
@@ -753,8 +836,9 @@ const file_kazakhexpress_payment_v1_payment_proto_rawDesc = "" +
 	"\x18PAYMENT_STATUS_SUCCEEDED\x10\x02\x12\x19\n" +
 	"\x15PAYMENT_STATUS_FAILED\x10\x03\x12\x1b\n" +
 	"\x17PAYMENT_STATUS_REFUNDED\x10\x04\x12\x1c\n" +
-	"\x18PAYMENT_STATUS_CANCELLED\x10\x052\xdf\x05\n" +
-	"\x0ePaymentService\x12b\n" +
+	"\x18PAYMENT_STATUS_CANCELLED\x10\x052\xcb\x06\n" +
+	"\x0ePaymentService\x12j\n" +
+	"\vHealthCheck\x12,.kazakhexpress.payment.v1.HealthCheckRequest\x1a-.kazakhexpress.payment.v1.HealthCheckResponse\x12b\n" +
 	"\rCreatePayment\x12..kazakhexpress.payment.v1.CreatePaymentRequest\x1a!.kazakhexpress.payment.v1.Payment\x12\\\n" +
 	"\n" +
 	"GetPayment\x12+.kazakhexpress.payment.v1.GetPaymentRequest\x1a!.kazakhexpress.payment.v1.Payment\x12n\n" +
@@ -777,41 +861,45 @@ func file_kazakhexpress_payment_v1_payment_proto_rawDescGZIP() []byte {
 }
 
 var file_kazakhexpress_payment_v1_payment_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_kazakhexpress_payment_v1_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_kazakhexpress_payment_v1_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_kazakhexpress_payment_v1_payment_proto_goTypes = []any{
 	(PaymentMethod)(0),                 // 0: kazakhexpress.payment.v1.PaymentMethod
 	(PaymentStatus)(0),                 // 1: kazakhexpress.payment.v1.PaymentStatus
-	(*CreatePaymentRequest)(nil),       // 2: kazakhexpress.payment.v1.CreatePaymentRequest
-	(*GetPaymentRequest)(nil),          // 3: kazakhexpress.payment.v1.GetPaymentRequest
-	(*GetPaymentByOrderIDRequest)(nil), // 4: kazakhexpress.payment.v1.GetPaymentByOrderIDRequest
-	(*ListPaymentsRequest)(nil),        // 5: kazakhexpress.payment.v1.ListPaymentsRequest
-	(*RefundPaymentRequest)(nil),       // 6: kazakhexpress.payment.v1.RefundPaymentRequest
-	(*ConfirmPaymentRequest)(nil),      // 7: kazakhexpress.payment.v1.ConfirmPaymentRequest
-	(*CancelPaymentRequest)(nil),       // 8: kazakhexpress.payment.v1.CancelPaymentRequest
-	(*Payment)(nil),                    // 9: kazakhexpress.payment.v1.Payment
-	(*ListPaymentsResponse)(nil),       // 10: kazakhexpress.payment.v1.ListPaymentsResponse
+	(*HealthCheckRequest)(nil),         // 2: kazakhexpress.payment.v1.HealthCheckRequest
+	(*HealthCheckResponse)(nil),        // 3: kazakhexpress.payment.v1.HealthCheckResponse
+	(*CreatePaymentRequest)(nil),       // 4: kazakhexpress.payment.v1.CreatePaymentRequest
+	(*GetPaymentRequest)(nil),          // 5: kazakhexpress.payment.v1.GetPaymentRequest
+	(*GetPaymentByOrderIDRequest)(nil), // 6: kazakhexpress.payment.v1.GetPaymentByOrderIDRequest
+	(*ListPaymentsRequest)(nil),        // 7: kazakhexpress.payment.v1.ListPaymentsRequest
+	(*RefundPaymentRequest)(nil),       // 8: kazakhexpress.payment.v1.RefundPaymentRequest
+	(*ConfirmPaymentRequest)(nil),      // 9: kazakhexpress.payment.v1.ConfirmPaymentRequest
+	(*CancelPaymentRequest)(nil),       // 10: kazakhexpress.payment.v1.CancelPaymentRequest
+	(*Payment)(nil),                    // 11: kazakhexpress.payment.v1.Payment
+	(*ListPaymentsResponse)(nil),       // 12: kazakhexpress.payment.v1.ListPaymentsResponse
 }
 var file_kazakhexpress_payment_v1_payment_proto_depIdxs = []int32{
 	0,  // 0: kazakhexpress.payment.v1.CreatePaymentRequest.method:type_name -> kazakhexpress.payment.v1.PaymentMethod
 	0,  // 1: kazakhexpress.payment.v1.Payment.method:type_name -> kazakhexpress.payment.v1.PaymentMethod
 	1,  // 2: kazakhexpress.payment.v1.Payment.status:type_name -> kazakhexpress.payment.v1.PaymentStatus
-	9,  // 3: kazakhexpress.payment.v1.ListPaymentsResponse.payments:type_name -> kazakhexpress.payment.v1.Payment
-	2,  // 4: kazakhexpress.payment.v1.PaymentService.CreatePayment:input_type -> kazakhexpress.payment.v1.CreatePaymentRequest
-	3,  // 5: kazakhexpress.payment.v1.PaymentService.GetPayment:input_type -> kazakhexpress.payment.v1.GetPaymentRequest
-	4,  // 6: kazakhexpress.payment.v1.PaymentService.GetPaymentByOrderID:input_type -> kazakhexpress.payment.v1.GetPaymentByOrderIDRequest
-	5,  // 7: kazakhexpress.payment.v1.PaymentService.ListPayments:input_type -> kazakhexpress.payment.v1.ListPaymentsRequest
-	6,  // 8: kazakhexpress.payment.v1.PaymentService.RefundPayment:input_type -> kazakhexpress.payment.v1.RefundPaymentRequest
-	7,  // 9: kazakhexpress.payment.v1.PaymentService.ConfirmPayment:input_type -> kazakhexpress.payment.v1.ConfirmPaymentRequest
-	8,  // 10: kazakhexpress.payment.v1.PaymentService.CancelPayment:input_type -> kazakhexpress.payment.v1.CancelPaymentRequest
-	9,  // 11: kazakhexpress.payment.v1.PaymentService.CreatePayment:output_type -> kazakhexpress.payment.v1.Payment
-	9,  // 12: kazakhexpress.payment.v1.PaymentService.GetPayment:output_type -> kazakhexpress.payment.v1.Payment
-	9,  // 13: kazakhexpress.payment.v1.PaymentService.GetPaymentByOrderID:output_type -> kazakhexpress.payment.v1.Payment
-	10, // 14: kazakhexpress.payment.v1.PaymentService.ListPayments:output_type -> kazakhexpress.payment.v1.ListPaymentsResponse
-	9,  // 15: kazakhexpress.payment.v1.PaymentService.RefundPayment:output_type -> kazakhexpress.payment.v1.Payment
-	9,  // 16: kazakhexpress.payment.v1.PaymentService.ConfirmPayment:output_type -> kazakhexpress.payment.v1.Payment
-	9,  // 17: kazakhexpress.payment.v1.PaymentService.CancelPayment:output_type -> kazakhexpress.payment.v1.Payment
-	11, // [11:18] is the sub-list for method output_type
-	4,  // [4:11] is the sub-list for method input_type
+	11, // 3: kazakhexpress.payment.v1.ListPaymentsResponse.payments:type_name -> kazakhexpress.payment.v1.Payment
+	2,  // 4: kazakhexpress.payment.v1.PaymentService.HealthCheck:input_type -> kazakhexpress.payment.v1.HealthCheckRequest
+	4,  // 5: kazakhexpress.payment.v1.PaymentService.CreatePayment:input_type -> kazakhexpress.payment.v1.CreatePaymentRequest
+	5,  // 6: kazakhexpress.payment.v1.PaymentService.GetPayment:input_type -> kazakhexpress.payment.v1.GetPaymentRequest
+	6,  // 7: kazakhexpress.payment.v1.PaymentService.GetPaymentByOrderID:input_type -> kazakhexpress.payment.v1.GetPaymentByOrderIDRequest
+	7,  // 8: kazakhexpress.payment.v1.PaymentService.ListPayments:input_type -> kazakhexpress.payment.v1.ListPaymentsRequest
+	8,  // 9: kazakhexpress.payment.v1.PaymentService.RefundPayment:input_type -> kazakhexpress.payment.v1.RefundPaymentRequest
+	9,  // 10: kazakhexpress.payment.v1.PaymentService.ConfirmPayment:input_type -> kazakhexpress.payment.v1.ConfirmPaymentRequest
+	10, // 11: kazakhexpress.payment.v1.PaymentService.CancelPayment:input_type -> kazakhexpress.payment.v1.CancelPaymentRequest
+	3,  // 12: kazakhexpress.payment.v1.PaymentService.HealthCheck:output_type -> kazakhexpress.payment.v1.HealthCheckResponse
+	11, // 13: kazakhexpress.payment.v1.PaymentService.CreatePayment:output_type -> kazakhexpress.payment.v1.Payment
+	11, // 14: kazakhexpress.payment.v1.PaymentService.GetPayment:output_type -> kazakhexpress.payment.v1.Payment
+	11, // 15: kazakhexpress.payment.v1.PaymentService.GetPaymentByOrderID:output_type -> kazakhexpress.payment.v1.Payment
+	12, // 16: kazakhexpress.payment.v1.PaymentService.ListPayments:output_type -> kazakhexpress.payment.v1.ListPaymentsResponse
+	11, // 17: kazakhexpress.payment.v1.PaymentService.RefundPayment:output_type -> kazakhexpress.payment.v1.Payment
+	11, // 18: kazakhexpress.payment.v1.PaymentService.ConfirmPayment:output_type -> kazakhexpress.payment.v1.Payment
+	11, // 19: kazakhexpress.payment.v1.PaymentService.CancelPayment:output_type -> kazakhexpress.payment.v1.Payment
+	12, // [12:20] is the sub-list for method output_type
+	4,  // [4:12] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name
 	4,  // [4:4] is the sub-list for extension extendee
 	0,  // [0:4] is the sub-list for field type_name
@@ -828,7 +916,7 @@ func file_kazakhexpress_payment_v1_payment_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kazakhexpress_payment_v1_payment_proto_rawDesc), len(file_kazakhexpress_payment_v1_payment_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

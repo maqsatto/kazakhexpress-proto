@@ -19,6 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	PaymentService_HealthCheck_FullMethodName         = "/kazakhexpress.payment.v1.PaymentService/HealthCheck"
 	PaymentService_CreatePayment_FullMethodName       = "/kazakhexpress.payment.v1.PaymentService/CreatePayment"
 	PaymentService_GetPayment_FullMethodName          = "/kazakhexpress.payment.v1.PaymentService/GetPayment"
 	PaymentService_GetPaymentByOrderID_FullMethodName = "/kazakhexpress.payment.v1.PaymentService/GetPaymentByOrderID"
@@ -32,6 +33,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PaymentServiceClient interface {
+	HealthCheck(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error)
 	CreatePayment(ctx context.Context, in *CreatePaymentRequest, opts ...grpc.CallOption) (*Payment, error)
 	GetPayment(ctx context.Context, in *GetPaymentRequest, opts ...grpc.CallOption) (*Payment, error)
 	GetPaymentByOrderID(ctx context.Context, in *GetPaymentByOrderIDRequest, opts ...grpc.CallOption) (*Payment, error)
@@ -47,6 +49,16 @@ type paymentServiceClient struct {
 
 func NewPaymentServiceClient(cc grpc.ClientConnInterface) PaymentServiceClient {
 	return &paymentServiceClient{cc}
+}
+
+func (c *paymentServiceClient) HealthCheck(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(HealthCheckResponse)
+	err := c.cc.Invoke(ctx, PaymentService_HealthCheck_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *paymentServiceClient) CreatePayment(ctx context.Context, in *CreatePaymentRequest, opts ...grpc.CallOption) (*Payment, error) {
@@ -123,6 +135,7 @@ func (c *paymentServiceClient) CancelPayment(ctx context.Context, in *CancelPaym
 // All implementations must embed UnimplementedPaymentServiceServer
 // for forward compatibility.
 type PaymentServiceServer interface {
+	HealthCheck(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error)
 	CreatePayment(context.Context, *CreatePaymentRequest) (*Payment, error)
 	GetPayment(context.Context, *GetPaymentRequest) (*Payment, error)
 	GetPaymentByOrderID(context.Context, *GetPaymentByOrderIDRequest) (*Payment, error)
@@ -140,6 +153,9 @@ type PaymentServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedPaymentServiceServer struct{}
 
+func (UnimplementedPaymentServiceServer) HealthCheck(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method HealthCheck not implemented")
+}
 func (UnimplementedPaymentServiceServer) CreatePayment(context.Context, *CreatePaymentRequest) (*Payment, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreatePayment not implemented")
 }
@@ -180,6 +196,24 @@ func RegisterPaymentServiceServer(s grpc.ServiceRegistrar, srv PaymentServiceSer
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&PaymentService_ServiceDesc, srv)
+}
+
+func _PaymentService_HealthCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HealthCheckRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PaymentServiceServer).HealthCheck(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PaymentService_HealthCheck_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PaymentServiceServer).HealthCheck(ctx, req.(*HealthCheckRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _PaymentService_CreatePayment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -315,6 +349,10 @@ var PaymentService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "kazakhexpress.payment.v1.PaymentService",
 	HandlerType: (*PaymentServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "HealthCheck",
+			Handler:    _PaymentService_HealthCheck_Handler,
+		},
 		{
 			MethodName: "CreatePayment",
 			Handler:    _PaymentService_CreatePayment_Handler,

@@ -5,6 +5,7 @@ package kazakhexpress.payment.v1;
 option go_package = "github.com/maqsatto/kazakhexpress-proto/gen/go/kazakhexpress/payment/v1;paymentv1";
 
 service PaymentService {
+  rpc HealthCheck(HealthCheckRequest) returns (HealthCheckResponse);
   rpc CreatePayment(CreatePaymentRequest) returns (Payment);
   rpc GetPayment(GetPaymentRequest) returns (Payment);
   rpc GetPaymentByOrderID(GetPaymentByOrderIDRequest) returns (Payment);
@@ -12,6 +13,12 @@ service PaymentService {
   rpc RefundPayment(RefundPaymentRequest) returns (Payment);
   rpc ConfirmPayment(ConfirmPaymentRequest) returns (Payment);
   rpc CancelPayment(CancelPaymentRequest) returns (Payment);
+}
+
+message HealthCheckRequest {}
+
+message HealthCheckResponse {
+  string status = 1;
 }
 
 message CreatePaymentRequest {
@@ -85,4 +92,3 @@ enum PaymentStatus {
   PAYMENT_STATUS_REFUNDED = 4;
   PAYMENT_STATUS_CANCELLED = 5;
 }
-

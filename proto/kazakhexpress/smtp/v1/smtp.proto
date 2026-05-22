@@ -5,16 +5,29 @@ package kazakhexpress.smtp.v1;
 option go_package = "github.com/maqsatto/kazakhexpress-proto/gen/go/kazakhexpress/smtp/v1;smtpv1";
 
 service SMTPService {
+  rpc HealthCheck(HealthCheckRequest) returns (HealthCheckResponse);
   rpc SendEmail(SendEmailRequest) returns (SendEmailResponse);
+  rpc SendWelcomeEmail(WelcomeEmailRequest) returns (SendEmailResponse);
   rpc SendPaymentReceipt(PaymentReceiptRequest) returns (SendEmailResponse);
   rpc SendPaymentRefund(PaymentRefundRequest) returns (SendEmailResponse);
   rpc SendPaymentFailure(PaymentFailureRequest) returns (SendEmailResponse);
+}
+
+message HealthCheckRequest {}
+
+message HealthCheckResponse {
+  string status = 1;
 }
 
 message SendEmailRequest {
   string to = 1;
   string subject = 2;
   string body = 3;
+}
+
+message WelcomeEmailRequest {
+  string to = 1;
+  string first_name = 2;
 }
 
 message PaymentReceiptRequest {
@@ -43,4 +56,3 @@ message PaymentFailureRequest {
 message SendEmailResponse {
   bool accepted = 1;
 }
-

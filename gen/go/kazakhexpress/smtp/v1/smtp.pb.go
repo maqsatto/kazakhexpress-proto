@@ -21,6 +21,86 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type HealthCheckRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *HealthCheckRequest) Reset() {
+	*x = HealthCheckRequest{}
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HealthCheckRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HealthCheckRequest) ProtoMessage() {}
+
+func (x *HealthCheckRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HealthCheckRequest.ProtoReflect.Descriptor instead.
+func (*HealthCheckRequest) Descriptor() ([]byte, []int) {
+	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP(), []int{0}
+}
+
+type HealthCheckResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *HealthCheckResponse) Reset() {
+	*x = HealthCheckResponse{}
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HealthCheckResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HealthCheckResponse) ProtoMessage() {}
+
+func (x *HealthCheckResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HealthCheckResponse.ProtoReflect.Descriptor instead.
+func (*HealthCheckResponse) Descriptor() ([]byte, []int) {
+	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *HealthCheckResponse) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
 type SendEmailRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	To            string                 `protobuf:"bytes,1,opt,name=to,proto3" json:"to,omitempty"`
@@ -32,7 +112,7 @@ type SendEmailRequest struct {
 
 func (x *SendEmailRequest) Reset() {
 	*x = SendEmailRequest{}
-	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[0]
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -44,7 +124,7 @@ func (x *SendEmailRequest) String() string {
 func (*SendEmailRequest) ProtoMessage() {}
 
 func (x *SendEmailRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[0]
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +137,7 @@ func (x *SendEmailRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendEmailRequest.ProtoReflect.Descriptor instead.
 func (*SendEmailRequest) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP(), []int{0}
+	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *SendEmailRequest) GetTo() string {
@@ -81,6 +161,58 @@ func (x *SendEmailRequest) GetBody() string {
 	return ""
 }
 
+type WelcomeEmailRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	To            string                 `protobuf:"bytes,1,opt,name=to,proto3" json:"to,omitempty"`
+	FirstName     string                 `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WelcomeEmailRequest) Reset() {
+	*x = WelcomeEmailRequest{}
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WelcomeEmailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WelcomeEmailRequest) ProtoMessage() {}
+
+func (x *WelcomeEmailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WelcomeEmailRequest.ProtoReflect.Descriptor instead.
+func (*WelcomeEmailRequest) Descriptor() ([]byte, []int) {
+	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *WelcomeEmailRequest) GetTo() string {
+	if x != nil {
+		return x.To
+	}
+	return ""
+}
+
+func (x *WelcomeEmailRequest) GetFirstName() string {
+	if x != nil {
+		return x.FirstName
+	}
+	return ""
+}
+
 type PaymentReceiptRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	To            string                 `protobuf:"bytes,1,opt,name=to,proto3" json:"to,omitempty"`
@@ -93,7 +225,7 @@ type PaymentReceiptRequest struct {
 
 func (x *PaymentReceiptRequest) Reset() {
 	*x = PaymentReceiptRequest{}
-	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[1]
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -105,7 +237,7 @@ func (x *PaymentReceiptRequest) String() string {
 func (*PaymentReceiptRequest) ProtoMessage() {}
 
 func (x *PaymentReceiptRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[1]
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -118,7 +250,7 @@ func (x *PaymentReceiptRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PaymentReceiptRequest.ProtoReflect.Descriptor instead.
 func (*PaymentReceiptRequest) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP(), []int{1}
+	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *PaymentReceiptRequest) GetTo() string {
@@ -162,7 +294,7 @@ type PaymentRefundRequest struct {
 
 func (x *PaymentRefundRequest) Reset() {
 	*x = PaymentRefundRequest{}
-	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[2]
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -174,7 +306,7 @@ func (x *PaymentRefundRequest) String() string {
 func (*PaymentRefundRequest) ProtoMessage() {}
 
 func (x *PaymentRefundRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[2]
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -187,7 +319,7 @@ func (x *PaymentRefundRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PaymentRefundRequest.ProtoReflect.Descriptor instead.
 func (*PaymentRefundRequest) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP(), []int{2}
+	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *PaymentRefundRequest) GetTo() string {
@@ -238,7 +370,7 @@ type PaymentFailureRequest struct {
 
 func (x *PaymentFailureRequest) Reset() {
 	*x = PaymentFailureRequest{}
-	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[3]
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -250,7 +382,7 @@ func (x *PaymentFailureRequest) String() string {
 func (*PaymentFailureRequest) ProtoMessage() {}
 
 func (x *PaymentFailureRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[3]
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -263,7 +395,7 @@ func (x *PaymentFailureRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PaymentFailureRequest.ProtoReflect.Descriptor instead.
 func (*PaymentFailureRequest) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP(), []int{3}
+	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *PaymentFailureRequest) GetTo() string {
@@ -310,7 +442,7 @@ type SendEmailResponse struct {
 
 func (x *SendEmailResponse) Reset() {
 	*x = SendEmailResponse{}
-	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[4]
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -322,7 +454,7 @@ func (x *SendEmailResponse) String() string {
 func (*SendEmailResponse) ProtoMessage() {}
 
 func (x *SendEmailResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[4]
+	mi := &file_kazakhexpress_smtp_v1_smtp_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -335,7 +467,7 @@ func (x *SendEmailResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendEmailResponse.ProtoReflect.Descriptor instead.
 func (*SendEmailResponse) Descriptor() ([]byte, []int) {
-	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP(), []int{4}
+	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *SendEmailResponse) GetAccepted() bool {
@@ -349,11 +481,18 @@ var File_kazakhexpress_smtp_v1_smtp_proto protoreflect.FileDescriptor
 
 const file_kazakhexpress_smtp_v1_smtp_proto_rawDesc = "" +
 	"\n" +
-	" kazakhexpress/smtp/v1/smtp.proto\x12\x15kazakhexpress.smtp.v1\"P\n" +
+	" kazakhexpress/smtp/v1/smtp.proto\x12\x15kazakhexpress.smtp.v1\"\x14\n" +
+	"\x12HealthCheckRequest\"-\n" +
+	"\x13HealthCheckResponse\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"P\n" +
 	"\x10SendEmailRequest\x12\x0e\n" +
 	"\x02to\x18\x01 \x01(\tR\x02to\x12\x18\n" +
 	"\asubject\x18\x02 \x01(\tR\asubject\x12\x12\n" +
-	"\x04body\x18\x03 \x01(\tR\x04body\"\x80\x01\n" +
+	"\x04body\x18\x03 \x01(\tR\x04body\"D\n" +
+	"\x13WelcomeEmailRequest\x12\x0e\n" +
+	"\x02to\x18\x01 \x01(\tR\x02to\x12\x1d\n" +
+	"\n" +
+	"first_name\x18\x02 \x01(\tR\tfirstName\"\x80\x01\n" +
 	"\x15PaymentReceiptRequest\x12\x0e\n" +
 	"\x02to\x18\x01 \x01(\tR\x02to\x12\x1d\n" +
 	"\n" +
@@ -378,9 +517,11 @@ const file_kazakhexpress_smtp_v1_smtp_proto_rawDesc = "" +
 	"amount_kzt\x18\x04 \x01(\x03R\tamountKzt\x12\x16\n" +
 	"\x06reason\x18\x05 \x01(\tR\x06reason\"/\n" +
 	"\x11SendEmailResponse\x12\x1a\n" +
-	"\baccepted\x18\x01 \x01(\bR\baccepted2\xb5\x03\n" +
-	"\vSMTPService\x12^\n" +
-	"\tSendEmail\x12'.kazakhexpress.smtp.v1.SendEmailRequest\x1a(.kazakhexpress.smtp.v1.SendEmailResponse\x12l\n" +
+	"\baccepted\x18\x01 \x01(\bR\baccepted2\x85\x05\n" +
+	"\vSMTPService\x12d\n" +
+	"\vHealthCheck\x12).kazakhexpress.smtp.v1.HealthCheckRequest\x1a*.kazakhexpress.smtp.v1.HealthCheckResponse\x12^\n" +
+	"\tSendEmail\x12'.kazakhexpress.smtp.v1.SendEmailRequest\x1a(.kazakhexpress.smtp.v1.SendEmailResponse\x12h\n" +
+	"\x10SendWelcomeEmail\x12*.kazakhexpress.smtp.v1.WelcomeEmailRequest\x1a(.kazakhexpress.smtp.v1.SendEmailResponse\x12l\n" +
 	"\x12SendPaymentReceipt\x12,.kazakhexpress.smtp.v1.PaymentReceiptRequest\x1a(.kazakhexpress.smtp.v1.SendEmailResponse\x12j\n" +
 	"\x11SendPaymentRefund\x12+.kazakhexpress.smtp.v1.PaymentRefundRequest\x1a(.kazakhexpress.smtp.v1.SendEmailResponse\x12l\n" +
 	"\x12SendPaymentFailure\x12,.kazakhexpress.smtp.v1.PaymentFailureRequest\x1a(.kazakhexpress.smtp.v1.SendEmailResponseBMZKgithub.com/maqsatto/kazakhexpress-proto/gen/go/kazakhexpress/smtp/v1;smtpv1b\x06proto3"
@@ -397,25 +538,32 @@ func file_kazakhexpress_smtp_v1_smtp_proto_rawDescGZIP() []byte {
 	return file_kazakhexpress_smtp_v1_smtp_proto_rawDescData
 }
 
-var file_kazakhexpress_smtp_v1_smtp_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_kazakhexpress_smtp_v1_smtp_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_kazakhexpress_smtp_v1_smtp_proto_goTypes = []any{
-	(*SendEmailRequest)(nil),      // 0: kazakhexpress.smtp.v1.SendEmailRequest
-	(*PaymentReceiptRequest)(nil), // 1: kazakhexpress.smtp.v1.PaymentReceiptRequest
-	(*PaymentRefundRequest)(nil),  // 2: kazakhexpress.smtp.v1.PaymentRefundRequest
-	(*PaymentFailureRequest)(nil), // 3: kazakhexpress.smtp.v1.PaymentFailureRequest
-	(*SendEmailResponse)(nil),     // 4: kazakhexpress.smtp.v1.SendEmailResponse
+	(*HealthCheckRequest)(nil),    // 0: kazakhexpress.smtp.v1.HealthCheckRequest
+	(*HealthCheckResponse)(nil),   // 1: kazakhexpress.smtp.v1.HealthCheckResponse
+	(*SendEmailRequest)(nil),      // 2: kazakhexpress.smtp.v1.SendEmailRequest
+	(*WelcomeEmailRequest)(nil),   // 3: kazakhexpress.smtp.v1.WelcomeEmailRequest
+	(*PaymentReceiptRequest)(nil), // 4: kazakhexpress.smtp.v1.PaymentReceiptRequest
+	(*PaymentRefundRequest)(nil),  // 5: kazakhexpress.smtp.v1.PaymentRefundRequest
+	(*PaymentFailureRequest)(nil), // 6: kazakhexpress.smtp.v1.PaymentFailureRequest
+	(*SendEmailResponse)(nil),     // 7: kazakhexpress.smtp.v1.SendEmailResponse
 }
 var file_kazakhexpress_smtp_v1_smtp_proto_depIdxs = []int32{
-	0, // 0: kazakhexpress.smtp.v1.SMTPService.SendEmail:input_type -> kazakhexpress.smtp.v1.SendEmailRequest
-	1, // 1: kazakhexpress.smtp.v1.SMTPService.SendPaymentReceipt:input_type -> kazakhexpress.smtp.v1.PaymentReceiptRequest
-	2, // 2: kazakhexpress.smtp.v1.SMTPService.SendPaymentRefund:input_type -> kazakhexpress.smtp.v1.PaymentRefundRequest
-	3, // 3: kazakhexpress.smtp.v1.SMTPService.SendPaymentFailure:input_type -> kazakhexpress.smtp.v1.PaymentFailureRequest
-	4, // 4: kazakhexpress.smtp.v1.SMTPService.SendEmail:output_type -> kazakhexpress.smtp.v1.SendEmailResponse
-	4, // 5: kazakhexpress.smtp.v1.SMTPService.SendPaymentReceipt:output_type -> kazakhexpress.smtp.v1.SendEmailResponse
-	4, // 6: kazakhexpress.smtp.v1.SMTPService.SendPaymentRefund:output_type -> kazakhexpress.smtp.v1.SendEmailResponse
-	4, // 7: kazakhexpress.smtp.v1.SMTPService.SendPaymentFailure:output_type -> kazakhexpress.smtp.v1.SendEmailResponse
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
+	0, // 0: kazakhexpress.smtp.v1.SMTPService.HealthCheck:input_type -> kazakhexpress.smtp.v1.HealthCheckRequest
+	2, // 1: kazakhexpress.smtp.v1.SMTPService.SendEmail:input_type -> kazakhexpress.smtp.v1.SendEmailRequest
+	3, // 2: kazakhexpress.smtp.v1.SMTPService.SendWelcomeEmail:input_type -> kazakhexpress.smtp.v1.WelcomeEmailRequest
+	4, // 3: kazakhexpress.smtp.v1.SMTPService.SendPaymentReceipt:input_type -> kazakhexpress.smtp.v1.PaymentReceiptRequest
+	5, // 4: kazakhexpress.smtp.v1.SMTPService.SendPaymentRefund:input_type -> kazakhexpress.smtp.v1.PaymentRefundRequest
+	6, // 5: kazakhexpress.smtp.v1.SMTPService.SendPaymentFailure:input_type -> kazakhexpress.smtp.v1.PaymentFailureRequest
+	1, // 6: kazakhexpress.smtp.v1.SMTPService.HealthCheck:output_type -> kazakhexpress.smtp.v1.HealthCheckResponse
+	7, // 7: kazakhexpress.smtp.v1.SMTPService.SendEmail:output_type -> kazakhexpress.smtp.v1.SendEmailResponse
+	7, // 8: kazakhexpress.smtp.v1.SMTPService.SendWelcomeEmail:output_type -> kazakhexpress.smtp.v1.SendEmailResponse
+	7, // 9: kazakhexpress.smtp.v1.SMTPService.SendPaymentReceipt:output_type -> kazakhexpress.smtp.v1.SendEmailResponse
+	7, // 10: kazakhexpress.smtp.v1.SMTPService.SendPaymentRefund:output_type -> kazakhexpress.smtp.v1.SendEmailResponse
+	7, // 11: kazakhexpress.smtp.v1.SMTPService.SendPaymentFailure:output_type -> kazakhexpress.smtp.v1.SendEmailResponse
+	6, // [6:12] is the sub-list for method output_type
+	0, // [0:6] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -432,7 +580,7 @@ func file_kazakhexpress_smtp_v1_smtp_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kazakhexpress_smtp_v1_smtp_proto_rawDesc), len(file_kazakhexpress_smtp_v1_smtp_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
